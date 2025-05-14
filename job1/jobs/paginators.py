@@ -1,8 +1,9 @@
-from rest_framework import pagination
+from rest_framework.pagination import PageNumberPagination
 
-class RecruitmentPaginator(pagination.PageNumberPagination):
+
+class RecruitmentPagination(PageNumberPagination):
     page_size = 3
 
 
-class CommentPaginator(pagination.PageNumberPagination):
+class CommentPagination(PageNumberPagination):
     page_size = 5

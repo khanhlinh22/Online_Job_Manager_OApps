@@ -16,28 +16,28 @@ class CategoryViewSet(viewsets.ViewSet, generics.ListAPIView):
     serializer_class = serializers.CategorySerializer
 
 
-class RecruitmentViewSet(viewsets.ViewSet, generics.ListAPIView,generics.DestroyAPIView):
-    queryset = Recruitment.objects.filter(active=True)
+class RecruitmentViewSet(viewsets.ViewSet, generics.ListAPIView, generics.DestroyAPIView):
+    queryset = Recruitment.objects.filter(active=True).order_by('id')  # Sử dụng queryset đúng cách
     serializer_class = serializers.RecruitmentSerializer
-    pagination_class = paginators.RecruitmentPaginator
+    pagination_class = paginators.RecruitmentPagination
 
     def get_queryset(self):
-        query = self.queryset
+        query = self.queryset  # Sử dụng self.queryset, không phải self.query
 
         q = self.request.query_params.get('q')
         if q:
-            query =query.filter(subject__icontains = q)
+            query = query.filter(subject__icontains=q)
 
-        cate_id =self.request.query_params.get('category_id')
+        cate_id = self.request.query_params.get('category_id')
         if cate_id:
-                query = query.filter(category_id = cate_id)
+            query = query.filter(category_id=cate_id)
 
         return query
 
     @action(methods=['get'], url_path='news', detail=True)
     def get_news(self, request, pk):
         news = self.get_object().new_set.filter(active=True)
-        return Response(serializers.NewSerializer(news,many=True).data)
+        return Response(serializers.NewSerializer(news, many=True).data)
 
 
 class NewViewSet(viewsets.ViewSet, generics.RetrieveAPIView,generics.DestroyAPIView):
@@ -67,7 +67,7 @@ class NewViewSet(viewsets.ViewSet, generics.RetrieveAPIView,generics.DestroyAPIV
             return Response(serializers.CommentSerializer(c).data, status=status.HTTP_201_CREATED)
         else:
            comments = self.get_object().comment_set.select_related('user').filter(active = True)
-           p = paginators.CommentPaginator()
+           p = paginators.CommentPagination()
            page = p.paginate_queryset(comments, self.request)
            if page is not None:
                 serializer =serializers.CommentSerializer(page, many=True)

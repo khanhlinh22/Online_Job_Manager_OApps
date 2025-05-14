@@ -8,14 +8,13 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class BaseSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
 
-    def get_image(self, recruitment):
-        if recruitment.image:
-            if recruitment.image.name.startswith("http"):
-                return recruitment.image.name
-            request = self.context.get('request')
-            return request.build_absolute_uri('/static/%s' % recruitment.image.name)
+        data['image'] = instance.image.url
+
+        return data
+
 
 class RecruitmentSerializer(BaseSerializer):
 
