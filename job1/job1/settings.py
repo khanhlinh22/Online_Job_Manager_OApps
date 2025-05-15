@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'job1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'job_db',
+        'NAME': 'ojob_db',
         'USER': 'root',
         'PASSWORD': 'Admin@123',
         'HOST': ''  # mặc định localhost

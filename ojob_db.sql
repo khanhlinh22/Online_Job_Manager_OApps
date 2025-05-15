@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: localhost    Database: job_db
+-- Host: localhost    Database: ojob_db
 -- ------------------------------------------------------
 -- Server version	8.0.41
 
@@ -82,7 +82,7 @@ CREATE TABLE `auth_permission` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `auth_permission_content_type_id_codename_01ab375a_uniq` (`content_type_id`,`codename`),
   CONSTRAINT `auth_permission_content_type_id_2f476e4b_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=77 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -91,7 +91,7 @@ CREATE TABLE `auth_permission` (
 
 LOCK TABLES `auth_permission` WRITE;
 /*!40000 ALTER TABLE `auth_permission` DISABLE KEYS */;
-INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add content type',4,'add_contenttype'),(14,'Can change content type',4,'change_contenttype'),(15,'Can delete content type',4,'delete_contenttype'),(16,'Can view content type',4,'view_contenttype'),(17,'Can add session',5,'add_session'),(18,'Can change session',5,'change_session'),(19,'Can delete session',5,'delete_session'),(20,'Can view session',5,'view_session'),(21,'Can add category',6,'add_category'),(22,'Can change category',6,'change_category'),(23,'Can delete category',6,'delete_category'),(24,'Can view category',6,'view_category'),(25,'Can add user',7,'add_user'),(26,'Can change user',7,'change_user'),(27,'Can delete user',7,'delete_user'),(28,'Can view user',7,'view_user'),(29,'Can add recruitment',8,'add_recruitment'),(30,'Can change recruitment',8,'change_recruitment'),(31,'Can delete recruitment',8,'delete_recruitment'),(32,'Can view recruitment',8,'view_recruitment'),(33,'Can add new',9,'add_new'),(34,'Can change new',9,'change_new'),(35,'Can delete new',9,'delete_new'),(36,'Can view new',9,'view_new'),(37,'Can add tag',10,'add_tag'),(38,'Can change tag',10,'change_tag'),(39,'Can delete tag',10,'delete_tag'),(40,'Can view tag',10,'view_tag'),(41,'Can add comment',11,'add_comment'),(42,'Can change comment',11,'change_comment'),(43,'Can delete comment',11,'delete_comment'),(44,'Can view comment',11,'view_comment'),(45,'Can add like',12,'add_like'),(46,'Can change like',12,'change_like'),(47,'Can delete like',12,'delete_like'),(48,'Can view like',12,'view_like'),(49,'Can add application',13,'add_application'),(50,'Can change application',13,'change_application'),(51,'Can delete application',13,'delete_application'),(52,'Can view application',13,'view_application'),(53,'Can add access token',14,'add_accesstoken'),(54,'Can change access token',14,'change_accesstoken'),(55,'Can delete access token',14,'delete_accesstoken'),(56,'Can view access token',14,'view_accesstoken'),(57,'Can add grant',15,'add_grant'),(58,'Can change grant',15,'change_grant'),(59,'Can delete grant',15,'delete_grant'),(60,'Can view grant',15,'view_grant'),(61,'Can add refresh token',16,'add_refreshtoken'),(62,'Can change refresh token',16,'change_refreshtoken'),(63,'Can delete refresh token',16,'delete_refreshtoken'),(64,'Can view refresh token',16,'view_refreshtoken'),(65,'Can add id token',17,'add_idtoken'),(66,'Can change id token',17,'change_idtoken'),(67,'Can delete id token',17,'delete_idtoken'),(68,'Can view id token',17,'view_idtoken'),(69,'Can add user profile',18,'add_userprofile'),(70,'Can change user profile',18,'change_userprofile'),(71,'Can delete user profile',18,'delete_userprofile'),(72,'Can view user profile',18,'view_userprofile'),(73,'Can add skill',19,'add_skill'),(74,'Can change skill',19,'change_skill'),(75,'Can delete skill',19,'delete_skill'),(76,'Can view skill',19,'view_skill');
+INSERT INTO `auth_permission` VALUES (1,'Can add log entry',1,'add_logentry'),(2,'Can change log entry',1,'change_logentry'),(3,'Can delete log entry',1,'delete_logentry'),(4,'Can view log entry',1,'view_logentry'),(5,'Can add permission',2,'add_permission'),(6,'Can change permission',2,'change_permission'),(7,'Can delete permission',2,'delete_permission'),(8,'Can view permission',2,'view_permission'),(9,'Can add group',3,'add_group'),(10,'Can change group',3,'change_group'),(11,'Can delete group',3,'delete_group'),(12,'Can view group',3,'view_group'),(13,'Can add content type',4,'add_contenttype'),(14,'Can change content type',4,'change_contenttype'),(15,'Can delete content type',4,'delete_contenttype'),(16,'Can view content type',4,'view_contenttype'),(17,'Can add session',5,'add_session'),(18,'Can change session',5,'change_session'),(19,'Can delete session',5,'delete_session'),(20,'Can view session',5,'view_session'),(21,'Can add category',6,'add_category'),(22,'Can change category',6,'change_category'),(23,'Can delete category',6,'delete_category'),(24,'Can view category',6,'view_category'),(25,'Can add user',7,'add_user'),(26,'Can change user',7,'change_user'),(27,'Can delete user',7,'delete_user'),(28,'Can view user',7,'view_user'),(29,'Can add recruitment',8,'add_recruitment'),(30,'Can change recruitment',8,'change_recruitment'),(31,'Can delete recruitment',8,'delete_recruitment'),(32,'Can view recruitment',8,'view_recruitment'),(33,'Can add new',9,'add_new'),(34,'Can change new',9,'change_new'),(35,'Can delete new',9,'delete_new'),(36,'Can view new',9,'view_new'),(37,'Can add tag',10,'add_tag'),(38,'Can change tag',10,'change_tag'),(39,'Can delete tag',10,'delete_tag'),(40,'Can view tag',10,'view_tag'),(41,'Can add comment',11,'add_comment'),(42,'Can change comment',11,'change_comment'),(43,'Can delete comment',11,'delete_comment'),(44,'Can view comment',11,'view_comment'),(45,'Can add like',12,'add_like'),(46,'Can change like',12,'change_like'),(47,'Can delete like',12,'delete_like'),(48,'Can view like',12,'view_like'),(49,'Can add skill',13,'add_skill'),(50,'Can change skill',13,'change_skill'),(51,'Can delete skill',13,'delete_skill'),(52,'Can view skill',13,'view_skill'),(53,'Can add user profile',14,'add_userprofile'),(54,'Can change user profile',14,'change_userprofile'),(55,'Can delete user profile',14,'delete_userprofile'),(56,'Can view user profile',14,'view_userprofile'),(57,'Can add type',15,'add_type'),(58,'Can change type',15,'change_type'),(59,'Can delete type',15,'delete_type'),(60,'Can view type',15,'view_type'),(61,'Can add application',16,'add_application'),(62,'Can change application',16,'change_application'),(63,'Can delete application',16,'delete_application'),(64,'Can view application',16,'view_application'),(65,'Can add access token',17,'add_accesstoken'),(66,'Can change access token',17,'change_accesstoken'),(67,'Can delete access token',17,'delete_accesstoken'),(68,'Can view access token',17,'view_accesstoken'),(69,'Can add grant',18,'add_grant'),(70,'Can change grant',18,'change_grant'),(71,'Can delete grant',18,'delete_grant'),(72,'Can view grant',18,'view_grant'),(73,'Can add refresh token',19,'add_refreshtoken'),(74,'Can change refresh token',19,'change_refreshtoken'),(75,'Can delete refresh token',19,'delete_refreshtoken'),(76,'Can view refresh token',19,'view_refreshtoken'),(77,'Can add id token',20,'add_idtoken'),(78,'Can change id token',20,'change_idtoken'),(79,'Can delete id token',20,'delete_idtoken'),(80,'Can view id token',20,'view_idtoken');
 /*!40000 ALTER TABLE `auth_permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -117,7 +117,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_jobs_user_id` FOREIGN KEY (`user_id`) REFERENCES `jobs_user` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2025-05-12 18:01:59.114904','1','IT',1,'[{\"added\": {}}]',6,1),(2,'2025-05-12 18:02:07.165221','2','Audit',1,'[{\"added\": {}}]',6,1),(3,'2025-05-12 18:02:23.435386','3','Marketing',1,'[{\"added\": {}}]',6,1),(4,'2025-05-12 18:03:25.479375','1','Tester',1,'[{\"added\": {}}]',8,1),(5,'2025-05-12 18:03:39.951862','2','Software Engineer',1,'[{\"added\": {}}]',8,1),(6,'2025-05-12 18:03:50.671097','3','Data Engineer',1,'[{\"added\": {}}]',8,1),(7,'2025-05-12 18:04:48.274994','1','Recruit for May',1,'[{\"added\": {}}]',9,1),(8,'2025-05-12 18:05:25.103303','2','Recruit for July',1,'[{\"added\": {}}]',9,1),(9,'2025-05-12 18:05:42.319835','3','Recruit for May',1,'[{\"added\": {}}]',9,1),(10,'2025-05-12 19:58:53.273206','4','Leader Marketing',1,'[{\"added\": {}}]',8,1),(11,'2025-05-12 20:14:03.761403','1','Django',1,'[{\"added\": {}}]',10,1),(12,'2025-05-12 20:36:58.405729','2','user1',1,'[{\"added\": {}}]',7,1),(13,'2025-05-12 20:46:00.187130','3','abcds',1,'[{\"added\": {}}]',7,1);
+INSERT INTO `django_admin_log` VALUES (1,'2025-05-15 07:36:16.120473','1','IT',1,'[{\"added\": {}}]',6,1),(2,'2025-05-15 07:36:25.738137','2','Marketing',1,'[{\"added\": {}}]',6,1),(3,'2025-05-15 07:36:29.056908','3','HR',1,'[{\"added\": {}}]',6,1),(4,'2025-05-15 07:36:37.337273','4','Audit',1,'[{\"added\": {}}]',6,1),(5,'2025-05-15 07:36:43.520176','5','Logictic',1,'[{\"added\": {}}]',6,1),(6,'2025-05-15 07:36:50.528185','6','Sale',1,'[{\"added\": {}}]',6,1),(7,'2025-05-15 07:36:54.530721','6','Sales',2,'[{\"changed\": {\"fields\": [\"Name\"]}}]',6,1),(8,'2025-05-15 07:37:11.058357','7','Barista',1,'[{\"added\": {}}]',6,1),(9,'2025-05-15 07:37:18.570570','8','Manager',1,'[{\"added\": {}}]',6,1),(10,'2025-05-15 07:37:26.252483','9','Teacher',1,'[{\"added\": {}}]',6,1),(11,'2025-05-15 07:37:31.251860','10','Design',1,'[{\"added\": {}}]',6,1),(12,'2025-05-15 07:38:37.301560','1','Software  Engineer',1,'[{\"added\": {}}]',8,1),(13,'2025-05-15 07:38:56.953619','2','Data Engineer',1,'[{\"added\": {}}]',8,1),(14,'2025-05-15 07:39:26.933218','3','Tester',1,'[{\"added\": {}}]',8,1),(15,'2025-05-15 07:39:42.291011','4','Intern Marketing',1,'[{\"added\": {}}]',8,1),(16,'2025-05-15 07:40:06.160607','5','Leader Marketing',1,'[{\"added\": {}}]',8,1),(17,'2025-05-15 07:40:28.675089','6','Manager Marketing',1,'[{\"added\": {}}]',8,1),(18,'2025-05-15 07:40:52.558440','7','HR Manager',1,'[{\"added\": {}}]',8,1),(19,'2025-05-15 07:42:12.196874','8','Auditor',1,'[{\"added\": {}}]',8,1),(20,'2025-05-15 07:44:48.076240','9','Internal Audit Specialist',1,'[{\"added\": {}}]',8,1),(21,'2025-05-15 07:45:37.523325','1','English',1,'[{\"added\": {}}]',10,1),(22,'2025-05-15 07:45:41.927792','1','Hire',1,'[{\"added\": {}}]',9,1),(23,'2025-05-15 07:48:36.584693','1','Software  Engineer',2,'[{\"changed\": {\"fields\": [\"Salary\", \"Image\"]}}]',8,1),(24,'2025-05-15 07:48:52.040573','2','Data Engineer',2,'[{\"changed\": {\"fields\": [\"Salary\", \"Image\"]}}]',8,1),(25,'2025-05-15 07:52:43.165760','1','Software  Engineer',2,'[{\"changed\": {\"fields\": [\"Type\"]}}]',8,1),(26,'2025-05-15 07:52:57.513450','1','Software  Engineer',2,'[{\"changed\": {\"fields\": [\"Image\"]}}]',8,1),(27,'2025-05-15 07:53:15.578750','2','Data Engineer',2,'[{\"changed\": {\"fields\": [\"Type\", \"Image\"]}}]',8,1),(28,'2025-05-15 07:53:38.628744','3','Tester',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(29,'2025-05-15 07:54:25.305013','4','Intern Marketing',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(30,'2025-05-15 07:54:32.770565','5','Leader Marketing',2,'[{\"changed\": {\"fields\": [\"Type\"]}}]',8,1),(31,'2025-05-15 07:54:46.417973','5','Leader Marketing',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(32,'2025-05-15 07:55:15.883702','7','HR Manager',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(33,'2025-05-15 07:55:37.618569','8','Auditor',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(34,'2025-05-15 07:55:57.493588','9','Internal Audit Specialist',2,'[{\"changed\": {\"fields\": [\"Type\", \"Salary\", \"Image\"]}}]',8,1),(35,'2025-05-15 07:56:50.968539','10','Intern Software Engineer',1,'[{\"added\": {}}]',8,1),(36,'2025-05-15 07:57:59.869997','2','Django',1,'[{\"added\": {}}]',10,1),(37,'2025-05-15 07:58:05.255514','3','Flask',1,'[{\"added\": {}}]',10,1),(38,'2025-05-15 07:58:09.149033','2','Hire',1,'[{\"added\": {}}]',9,1),(39,'2025-05-15 07:58:28.807353','1','Hire For July',2,'[{\"changed\": {\"fields\": [\"Subject\"]}}]',9,1),(40,'2025-05-15 07:59:11.030880','3','Recruit for May',1,'[{\"added\": {}}]',9,1),(41,'2025-05-15 08:00:03.342515','4','Recruit for May',1,'[{\"added\": {}}]',9,1),(42,'2025-05-15 08:00:17.619641','4','Chinese',1,'[{\"added\": {}}]',10,1),(43,'2025-05-15 08:00:21.816032','3','Recruit for May',2,'[{\"changed\": {\"fields\": [\"Tags\"]}}]',9,1),(44,'2025-05-15 08:01:05.430110','5','Recruit for May',1,'[{\"added\": {}}]',9,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -143,7 +143,7 @@ CREATE TABLE `django_content_type` (
   `model` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `django_content_type_app_label_model_76bd3d3b_uniq` (`app_label`,`model`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +152,7 @@ CREATE TABLE `django_content_type` (
 
 LOCK TABLES `django_content_type` WRITE;
 /*!40000 ALTER TABLE `django_content_type` DISABLE KEYS */;
-INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'contenttypes','contenttype'),(6,'jobs','category'),(11,'jobs','comment'),(12,'jobs','like'),(9,'jobs','new'),(8,'jobs','recruitment'),(19,'jobs','skill'),(10,'jobs','tag'),(7,'jobs','user'),(18,'jobs','userprofile'),(14,'oauth2_provider','accesstoken'),(13,'oauth2_provider','application'),(15,'oauth2_provider','grant'),(17,'oauth2_provider','idtoken'),(16,'oauth2_provider','refreshtoken'),(5,'sessions','session');
+INSERT INTO `django_content_type` VALUES (1,'admin','logentry'),(3,'auth','group'),(2,'auth','permission'),(4,'contenttypes','contenttype'),(6,'jobs','category'),(11,'jobs','comment'),(12,'jobs','like'),(9,'jobs','new'),(8,'jobs','recruitment'),(13,'jobs','skill'),(10,'jobs','tag'),(15,'jobs','type'),(7,'jobs','user'),(14,'jobs','userprofile'),(17,'oauth2_provider','accesstoken'),(16,'oauth2_provider','application'),(18,'oauth2_provider','grant'),(20,'oauth2_provider','idtoken'),(19,'oauth2_provider','refreshtoken'),(5,'sessions','session');
 /*!40000 ALTER TABLE `django_content_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `django_migrations` (
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `applied` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2025-05-12 17:47:09.598969'),(2,'contenttypes','0002_remove_content_type_name','2025-05-12 17:47:09.709181'),(3,'auth','0001_initial','2025-05-12 17:47:10.040765'),(4,'auth','0002_alter_permission_name_max_length','2025-05-12 17:47:10.111526'),(5,'auth','0003_alter_user_email_max_length','2025-05-12 17:47:10.117537'),(6,'auth','0004_alter_user_username_opts','2025-05-12 17:47:10.123675'),(7,'auth','0005_alter_user_last_login_null','2025-05-12 17:47:10.129354'),(8,'auth','0006_require_contenttypes_0002','2025-05-12 17:47:10.133362'),(9,'auth','0007_alter_validators_add_error_messages','2025-05-12 17:47:10.137379'),(10,'auth','0008_alter_user_username_max_length','2025-05-12 17:47:10.144968'),(11,'auth','0009_alter_user_last_name_max_length','2025-05-12 17:47:10.151556'),(12,'auth','0010_alter_group_name_max_length','2025-05-12 17:47:10.167568'),(13,'auth','0011_update_proxy_permissions','2025-05-12 17:47:10.179285'),(14,'auth','0012_alter_user_first_name_max_length','2025-05-12 17:47:10.227717'),(15,'jobs','0001_initial','2025-05-12 17:47:10.640727'),(16,'admin','0001_initial','2025-05-12 17:47:10.777361'),(17,'admin','0002_logentry_remove_auto_add','2025-05-12 17:47:10.787312'),(18,'admin','0003_logentry_add_action_flag_choices','2025-05-12 17:47:10.787312'),(19,'sessions','0001_initial','2025-05-12 17:47:10.837058'),(20,'jobs','0002_recruitment_new','2025-05-12 17:55:32.252044'),(21,'jobs','0003_alter_new_content','2025-05-12 18:32:41.911597'),(22,'jobs','0004_tag_new_tags','2025-05-12 20:13:26.674018'),(23,'jobs','0005_comment_like','2025-05-12 20:17:46.918040'),(24,'jobs','0006_user_avatar','2025-05-12 20:30:20.834891'),(25,'jobs','0007_alter_user_avatar','2025-05-12 20:44:52.440823'),(26,'oauth2_provider','0001_initial','2025-05-12 20:55:49.611241'),(27,'oauth2_provider','0002_auto_20190406_1805','2025-05-12 20:55:49.734053'),(28,'oauth2_provider','0003_auto_20201211_1314','2025-05-12 20:55:49.794938'),(29,'oauth2_provider','0004_auto_20200902_2022','2025-05-12 20:55:50.230535'),(30,'oauth2_provider','0005_auto_20211222_2352','2025-05-12 20:55:50.303070'),(31,'oauth2_provider','0006_alter_application_client_secret','2025-05-12 20:55:50.327529'),(32,'oauth2_provider','0007_application_post_logout_redirect_uris','2025-05-12 20:55:50.396860'),(33,'oauth2_provider','0008_alter_accesstoken_token','2025-05-12 20:55:50.405348'),(34,'oauth2_provider','0009_add_hash_client_secret','2025-05-12 20:55:50.485787'),(35,'oauth2_provider','0010_application_allowed_origins','2025-05-12 20:55:50.553063'),(36,'oauth2_provider','0011_refreshtoken_token_family','2025-05-12 20:55:50.612700'),(37,'oauth2_provider','0012_add_token_checksum','2025-05-12 20:55:50.867751'),(38,'jobs','0008_alter_new_image_alter_recruitment_image','2025-05-12 21:21:54.108750'),(39,'jobs','0009_skill_userprofile','2025-05-12 21:28:44.931799');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2025-05-15 07:31:59.181995'),(2,'contenttypes','0002_remove_content_type_name','2025-05-15 07:31:59.302972'),(3,'auth','0001_initial','2025-05-15 07:31:59.545860'),(4,'auth','0002_alter_permission_name_max_length','2025-05-15 07:31:59.609068'),(5,'auth','0003_alter_user_email_max_length','2025-05-15 07:31:59.609068'),(6,'auth','0004_alter_user_username_opts','2025-05-15 07:31:59.625848'),(7,'auth','0005_alter_user_last_login_null','2025-05-15 07:31:59.625848'),(8,'auth','0006_require_contenttypes_0002','2025-05-15 07:31:59.625848'),(9,'auth','0007_alter_validators_add_error_messages','2025-05-15 07:31:59.640729'),(10,'auth','0008_alter_user_username_max_length','2025-05-15 07:31:59.640729'),(11,'auth','0009_alter_user_last_name_max_length','2025-05-15 07:31:59.656806'),(12,'auth','0010_alter_group_name_max_length','2025-05-15 07:31:59.672010'),(13,'auth','0011_update_proxy_permissions','2025-05-15 07:31:59.672010'),(14,'auth','0012_alter_user_first_name_max_length','2025-05-15 07:31:59.688103'),(15,'jobs','0001_initial','2025-05-15 07:32:00.042910'),(16,'admin','0001_initial','2025-05-15 07:32:00.181367'),(17,'admin','0002_logentry_remove_auto_add','2025-05-15 07:32:00.197461'),(18,'admin','0003_logentry_add_action_flag_choices','2025-05-15 07:32:00.208141'),(19,'jobs','0002_recruitment_new','2025-05-15 07:32:00.353995'),(20,'jobs','0003_alter_new_content','2025-05-15 07:32:00.356778'),(21,'jobs','0004_tag_new_tags','2025-05-15 07:32:00.537890'),(22,'jobs','0005_comment_like','2025-05-15 07:32:00.806505'),(23,'jobs','0006_user_avatar','2025-05-15 07:32:00.861443'),(24,'jobs','0007_alter_user_avatar','2025-05-15 07:32:00.901613'),(25,'jobs','0008_alter_new_image_alter_recruitment_image','2025-05-15 07:32:00.981045'),(26,'jobs','0009_skill_userprofile','2025-05-15 07:32:01.228579'),(27,'jobs','0010_type_recruitment_salary_recruitment_types','2025-05-15 07:32:01.473156'),(28,'jobs','0011_alter_recruitment_salary','2025-05-15 07:32:01.527866'),(29,'oauth2_provider','0001_initial','2025-05-15 07:32:02.271274'),(30,'oauth2_provider','0002_auto_20190406_1805','2025-05-15 07:32:02.408661'),(31,'oauth2_provider','0003_auto_20201211_1314','2025-05-15 07:32:02.484351'),(32,'oauth2_provider','0004_auto_20200902_2022','2025-05-15 07:32:02.939026'),(33,'oauth2_provider','0005_auto_20211222_2352','2025-05-15 07:32:03.006656'),(34,'oauth2_provider','0006_alter_application_client_secret','2025-05-15 07:32:03.038779'),(35,'oauth2_provider','0007_application_post_logout_redirect_uris','2025-05-15 07:32:03.128778'),(36,'oauth2_provider','0008_alter_accesstoken_token','2025-05-15 07:32:03.133497'),(37,'oauth2_provider','0009_add_hash_client_secret','2025-05-15 07:32:03.225994'),(38,'oauth2_provider','0010_application_allowed_origins','2025-05-15 07:32:03.292136'),(39,'oauth2_provider','0011_refreshtoken_token_family','2025-05-15 07:32:03.359585'),(40,'oauth2_provider','0012_add_token_checksum','2025-05-15 07:32:03.639669'),(41,'sessions','0001_initial','2025-05-15 07:32:03.693757'),(42,'jobs','0012_remove_recruitment_types_remove_recruitment_salary_and_more','2025-05-15 07:32:56.284832'),(43,'jobs','0013_remove_new_salary_recruitment_salary','2025-05-15 07:47:30.416882'),(44,'jobs','0014_recruitment_type','2025-05-15 07:52:02.055362');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `django_session` (
 
 LOCK TABLES `django_session` WRITE;
 /*!40000 ALTER TABLE `django_session` DISABLE KEYS */;
-INSERT INTO `django_session` VALUES ('sptk5f836x5i460jslzr8z5r6x0a2teb','.eJxVjEEOwiAQRe_C2hCgpYBL9z0DmWEGqRqalHZlvLtt0oVu_3vvv0WEbS1xa7zEicRVaHH53RDSk-sB6AH1Pss013WZUB6KPGmT40z8up3u30GBVvYaUCsOZEzQvcmWyWln0fjMoR9MSGQ7heggEHeGmJS23vu8-zm5IYH4fAHifjgO:1uEXS2:PBoa3g8h79teuWfPZaCDIio7Tgn8ifkqH-PD54o5zfI','2025-05-26 18:00:30.711959');
+INSERT INTO `django_session` VALUES ('mcaq1qc1dgi196kkellnw1unix6jmqzz','.eJxVjEEOwiAQRe_C2pABSgsu3XsGMgODVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwJ3EWSpx-N8L44LqDdMd6azK2ui4zyV2RB-3y2hI_L4f7d1Cwl2_tM0Q2nHkyPhI5pCFDQodqzFPyo4oW3KAVA2nQCNaSRbRJWTBGuSjeHwfjOBM:1uFT8O:Ul3Qrv3Rwoa98rgOE2Azp9Anwn8oS9LyzCQK2aotkFk','2025-05-29 07:36:04.419378');
 /*!40000 ALTER TABLE `django_session` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,7 @@ CREATE TABLE `jobs_category` (
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `jobs_category` (
 
 LOCK TABLES `jobs_category` WRITE;
 /*!40000 ALTER TABLE `jobs_category` DISABLE KEYS */;
-INSERT INTO `jobs_category` VALUES (1,1,'2025-05-12 18:01:59.114098','2025-05-12 18:01:59.114098','IT'),(2,1,'2025-05-12 18:02:07.163677','2025-05-12 18:02:07.163677','Audit'),(3,1,'2025-05-12 18:02:23.435386','2025-05-12 18:02:23.435386','Marketing');
+INSERT INTO `jobs_category` VALUES (1,1,'2025-05-15 07:36:16.120473','2025-05-15 07:36:16.120473','IT'),(2,1,'2025-05-15 07:36:25.738137','2025-05-15 07:36:25.738137','Marketing'),(3,1,'2025-05-15 07:36:29.056908','2025-05-15 07:36:29.056908','HR'),(4,1,'2025-05-15 07:36:37.337273','2025-05-15 07:36:37.337273','Audit'),(5,1,'2025-05-15 07:36:43.520176','2025-05-15 07:36:43.520176','Logictic'),(6,1,'2025-05-15 07:36:50.528185','2025-05-15 07:36:50.528185','Sales'),(7,1,'2025-05-15 07:37:11.058357','2025-05-15 07:37:11.058357','Barista'),(8,1,'2025-05-15 07:37:18.570570','2025-05-15 07:37:18.570570','Manager'),(9,1,'2025-05-15 07:37:26.252483','2025-05-15 07:37:26.252483','Teacher'),(10,1,'2025-05-15 07:37:31.251860','2025-05-15 07:37:31.251860','Design');
 /*!40000 ALTER TABLE `jobs_category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,7 +318,7 @@ CREATE TABLE `jobs_new` (
   PRIMARY KEY (`id`),
   KEY `jobs_new_recruitment_id_5dba5fcc_fk_jobs_recruitment_id` (`recruitment_id`),
   CONSTRAINT `jobs_new_recruitment_id_5dba5fcc_fk_jobs_recruitment_id` FOREIGN KEY (`recruitment_id`) REFERENCES `jobs_recruitment` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -327,7 +327,7 @@ CREATE TABLE `jobs_new` (
 
 LOCK TABLES `jobs_new` WRITE;
 /*!40000 ALTER TABLE `jobs_new` DISABLE KEYS */;
-INSERT INTO `jobs_new` VALUES (1,1,'2025-05-12 18:04:48.270856','2025-05-12 18:04:48.270856','Recruit for May','We are happy when you come here.','new/2025/05/testjob.jpg',1),(2,1,'2025-05-12 18:05:25.099382','2025-05-12 18:05:25.099382','Recruit for July','We are happy when you come here.','new/2025/05/dejob.png',3),(3,1,'2025-05-12 18:05:42.319835','2025-05-12 18:05:42.319835','Recruit for May','We are happy when you come here.','new/2025/05/sw.jpg',2);
+INSERT INTO `jobs_new` VALUES (1,1,'2025-05-15 07:45:40.165729','2025-05-15 07:45:40.165729','Hire For July','<pre>\r\nWe are happy when you come here.</pre>','image/upload/v1747295141/kc2begbfevpmgxhhlbos.jpg',7),(2,1,'2025-05-15 07:58:08.258376','2025-05-15 07:58:08.258376','Hire','<pre>\r\nWe are happy when you come here.</pre>','image/upload/v1747295888/ali2euapmzrsbhmfvc6g.jpg',1),(3,1,'2025-05-15 07:59:10.402721','2025-05-15 07:59:10.402721','Recruit for May','<pre>\r\nWe are happy when you come here.</pre>','image/upload/v1747295950/clvapjowrkyazvpf2ym1.png',5),(4,1,'2025-05-15 08:00:02.616368','2025-05-15 08:00:02.616368','Recruit for May','<pre>\r\nWe are happy when you come here.</pre>','image/upload/v1747296002/qn2mrownfsoe0u8kmcyn.png',4),(5,1,'2025-05-15 08:01:04.661244','2025-05-15 08:01:04.661244','Recruit for May','<pre>\r\nWe are happy when you come here.</pre>','image/upload/v1747296064/x92nxebndunupxae3mvw.jpg',9);
 /*!40000 ALTER TABLE `jobs_new` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +347,7 @@ CREATE TABLE `jobs_new_tags` (
   KEY `jobs_new_tags_tag_id_ad29bc66_fk_jobs_tag_id` (`tag_id`),
   CONSTRAINT `jobs_new_tags_new_id_ef5abc1c_fk_jobs_new_id` FOREIGN KEY (`new_id`) REFERENCES `jobs_new` (`id`),
   CONSTRAINT `jobs_new_tags_tag_id_ad29bc66_fk_jobs_tag_id` FOREIGN KEY (`tag_id`) REFERENCES `jobs_tag` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,6 +356,7 @@ CREATE TABLE `jobs_new_tags` (
 
 LOCK TABLES `jobs_new_tags` WRITE;
 /*!40000 ALTER TABLE `jobs_new_tags` DISABLE KEYS */;
+INSERT INTO `jobs_new_tags` VALUES (1,1,1),(2,2,2),(3,2,3),(6,3,4),(5,4,1),(7,5,4);
 /*!40000 ALTER TABLE `jobs_new_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,10 +376,12 @@ CREATE TABLE `jobs_recruitment` (
   `scription` longtext COLLATE utf8mb4_unicode_ci,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `category_id` bigint NOT NULL,
+  `salary` decimal(12,2) NOT NULL,
+  `type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `jobs_recruitment_category_id_b4bed6e3_fk_jobs_category_id` (`category_id`),
   CONSTRAINT `jobs_recruitment_category_id_b4bed6e3_fk_jobs_category_id` FOREIGN KEY (`category_id`) REFERENCES `jobs_category` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +390,7 @@ CREATE TABLE `jobs_recruitment` (
 
 LOCK TABLES `jobs_recruitment` WRITE;
 /*!40000 ALTER TABLE `jobs_recruitment` DISABLE KEYS */;
-INSERT INTO `jobs_recruitment` VALUES (1,1,'2025-05-12 18:03:25.464010','2025-05-12 18:03:25.464010','Tester','We are happy when you come here.','recruitment/2025/05/testjob.jpg',1),(2,1,'2025-05-12 18:03:39.948343','2025-05-12 18:03:39.948343','Software Engineer','We are happy when you come here.','recruitment/2025/05/sw.jpg',1),(3,1,'2025-05-12 18:03:50.667707','2025-05-12 18:03:50.667707','Data Engineer','We are happy when you come here.','recruitment/2025/05/dejob.png',1),(4,1,'2025-05-12 19:58:53.271652','2025-05-12 19:58:53.271652','Leader Marketing','We are happy when you come here.','recruitment/2025/05/mèo.jpg',3);
+INSERT INTO `jobs_recruitment` VALUES (1,1,'2025-05-15 07:38:34.585125','2025-05-15 07:38:34.585125','Software  Engineer','We are happy when you come here.','image/upload/v1747295576/rkq2ka98lkdx4umcv2bg.jpg',1,20000000.00,'Full-time'),(2,1,'2025-05-15 07:38:56.251506','2025-05-15 07:38:56.251506','Data Engineer','We are happy when you come here.','image/upload/v1747295595/afmyhabmsjqnoo1irx4b.png',1,20000000.00,'Full-time'),(3,1,'2025-05-15 07:39:25.736715','2025-05-15 07:39:25.736715','Tester','We are happy when you come here.','image/upload/v1747295617/bmzh7znufh4ohavrrj7i.jpg',1,10000000.00,'Full-time'),(4,1,'2025-05-15 07:39:41.050212','2025-05-15 07:39:41.050212','Intern Marketing','We are happy when you come here.','image/upload/v1747295664/w4jy9hhomungzonflfez.jpg',2,15000000.00,'Full-time'),(5,1,'2025-05-15 07:40:05.334211','2025-05-15 07:40:05.334211','Leader Marketing','We are happy when you come here.','image/upload/v1747295685/wdowu3bmj29jqjisibn6.png',2,25000000.00,'Full-time'),(6,1,'2025-05-15 07:40:26.122291','2025-05-15 07:40:26.122291','Manager Marketing','We are happy when you come here.','image/upload/v1747294827/juaoa1ggepql7nakmw0t.jpg',2,0.00,'0'),(7,1,'2025-05-15 07:40:51.692450','2025-05-15 07:40:51.692450','HR Manager','We are happy when you come here.','image/upload/v1747295715/ounlunouqffegr6kjv4s.jpg',3,30000000.00,'Full'),(8,1,'2025-05-15 07:42:11.215010','2025-05-15 07:42:11.215010','Auditor','We are happy when you come here.','image/upload/v1747295737/bltaag3fnlozzz4q1rx4.jpg',4,10000000.00,'Fu'),(9,1,'2025-05-15 07:44:46.763398','2025-05-15 07:44:46.763398','Internal Audit Specialist','We are happy when you come here.','image/upload/v1747295756/gfnaekldfzhiautp1c1s.jpg',4,5000000.00,'Fu'),(10,1,'2025-05-15 07:56:50.050654','2025-05-15 07:56:50.050654','Intern Software Engineer','We are happy when you come here.','image/upload/v1747295810/epagszw62x0tnhs5px85.jpg',1,5000000.00,'Full-time');
 /*!40000 ALTER TABLE `jobs_recruitment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,7 +436,7 @@ CREATE TABLE `jobs_tag` (
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +445,7 @@ CREATE TABLE `jobs_tag` (
 
 LOCK TABLES `jobs_tag` WRITE;
 /*!40000 ALTER TABLE `jobs_tag` DISABLE KEYS */;
-INSERT INTO `jobs_tag` VALUES (1,1,'2025-05-12 20:14:03.759118','2025-05-12 20:14:03.759118','Django');
+INSERT INTO `jobs_tag` VALUES (1,1,'2025-05-15 07:45:37.522186','2025-05-15 07:45:37.522186','English'),(2,1,'2025-05-15 07:57:59.869205','2025-05-15 07:57:59.869205','Django'),(3,1,'2025-05-15 07:58:05.254451','2025-05-15 07:58:05.254451','Flask'),(4,1,'2025-05-15 08:00:17.617494','2025-05-15 08:00:17.617494','Chinese');
 /*!40000 ALTER TABLE `jobs_tag` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -468,7 +471,7 @@ CREATE TABLE `jobs_user` (
   `avatar` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -477,7 +480,7 @@ CREATE TABLE `jobs_user` (
 
 LOCK TABLES `jobs_user` WRITE;
 /*!40000 ALTER TABLE `jobs_user` DISABLE KEYS */;
-INSERT INTO `jobs_user` VALUES (1,'pbkdf2_sha256$1000000$Xppv4qlIWfNuFt9HBbcC0S$c9lxSiaGJZzC6+aUHRBB5xjeSlmA8069VkQMx7axdNc=','2025-05-12 18:00:30.695257',1,'admin','','','admin@gmail.com',1,1,'2025-05-12 17:57:12.020896',NULL),(2,'1234',NULL,0,'user1','abc','def','adb@gmail.com',0,1,'2025-05-12 20:36:32.000000','testjob.jpg'),(3,'1',NULL,0,'abcds','erd','edsss','erd@gmail.com',0,1,'2025-05-12 20:45:29.000000','image/upload/v1747082758/nzefwzxijtykhd1het5m.png'),(4,'123456',NULL,0,'lichi','lili','chichi','',0,1,'2025-05-12 20:48:31.395659','image/upload/v1747082912/dryozsvpucswgsyafprq.png'),(5,'pbkdf2_sha256$1000000$3ss2upkVoQmeuCRlkbv67v$Pn23mHIEmLMqGCRlohjJLLLdvLVQILx+7sEQi91RJSs=',NULL,0,'user','lili','chichi','',0,1,'2025-05-12 20:50:30.619735','image/upload/v1747083032/y8wr6aiifcmki7eiokfu.png'),(6,'pbkdf2_sha256$1000000$UlRUVpDAaJvehDqMrq8lG8$9nTuU4a/1Kc1bag67QUkUaWxUq80/8yYobKc1AcRWbM=',NULL,0,'user3','lili','chichi','',0,1,'2025-05-12 20:51:55.088944','image/upload/v1747083117/hnuotdrpaxelh0oje3qx.png');
+INSERT INTO `jobs_user` VALUES (1,'pbkdf2_sha256$1000000$s7eLTf6gj7nL6vNHs450UE$k88AdOJosbbS0CBtSpNk9/gbTmEjDaxhTiGWs1FTyX8=','2025-05-15 07:36:04.414980',1,'admin','','','admin@gmail.com',1,1,'2025-05-15 07:35:36.910476',NULL);
 /*!40000 ALTER TABLE `jobs_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -669,7 +672,7 @@ CREATE TABLE `oauth2_provider_application` (
   KEY `oauth2_provider_application_user_id_79829054_fk_jobs_user_id` (`user_id`),
   KEY `oauth2_provider_application_client_secret_53133678` (`client_secret`),
   CONSTRAINT `oauth2_provider_application_user_id_79829054_fk_jobs_user_id` FOREIGN KEY (`user_id`) REFERENCES `jobs_user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -678,7 +681,6 @@ CREATE TABLE `oauth2_provider_application` (
 
 LOCK TABLES `oauth2_provider_application` WRITE;
 /*!40000 ALTER TABLE `oauth2_provider_application` DISABLE KEYS */;
-INSERT INTO `oauth2_provider_application` VALUES (1,'R8oqau32w5HhFioPbkaNgwwNIjLmT1Rdn4cLcxis','','confidential','password','pbkdf2_sha256$1000000$X0N9EziPR7t0K4XsW0Lih9$q9NM1t55q7Z8LRaoqKzHQOpMCgVwEl2O19/hUMR3+cc=','oJob',1,0,'2025-05-12 20:59:40.764604','2025-05-12 20:59:40.764604','','',1,'');
 /*!40000 ALTER TABLE `oauth2_provider_application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -801,4 +803,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-14 16:07:05
+-- Dump completed on 2025-05-15 15:01:51

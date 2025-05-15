@@ -32,14 +32,19 @@ class Recruitment(BaseModel):
     subject = models.CharField(max_length=255)
     scription = models.TextField(null=True)
     # image =models.ImageField(upload_to='recruitment/%Y/%m/')
+    type = models.CharField(max_length=100)
+    salary = models.DecimalField(max_digits=12, decimal_places=2)
     image = CloudinaryField(null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)  # kieu khong cho xoa
+
 
     def __str__(self):
         return self.subject
 
     def get_scription(self):
         return mark_safe(self.scription)
+
+
 
 
 class New(BaseModel):  # kieu bang tin dang tuyen dung
