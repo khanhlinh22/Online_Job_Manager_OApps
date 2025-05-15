@@ -1,9 +1,10 @@
 import axios from "axios";
 
-const BASE_URL = ' https://linhdiep.pythonanywhere.com/';
+const BASE_URL = 'https://linhdiepk3.pythonanywhere.com/';
 
 export const endpoints ={
-    'categories': '/categories/'
+    'categories': '/categories/',
+    'recruitments':'/recruitments/'
 }
 
 export default axios.create({
