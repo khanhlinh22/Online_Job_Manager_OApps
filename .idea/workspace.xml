@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="81050598-c80b-43ca-b8b1-44f68ed1d6a9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1/job1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/job1/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1/jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1/jobs/paginators.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/paginators.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1/jobs/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1mobileapp/components/Home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/components/Home/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ojob_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/ojob_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/job1/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
