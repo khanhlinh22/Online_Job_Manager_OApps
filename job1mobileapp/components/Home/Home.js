@@ -1,41 +1,57 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, FlatList, RefreshControl } from 'react-native';
 import MyStyles from "../../styles/MyStyles";
 import { useEffect, useState } from 'react';
 import APIs, { endpoints } from '../../configs/APIs';
-import { ActivityIndicator, Chip, List } from 'react-native-paper';
+import { ActivityIndicator, Chip, List, Searchbar } from 'react-native-paper';
 import { Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Items from './Items';
 
 const Home = () => {
 
     const [categories, setCategories] = useState([]);
     const [recruitments, setRecruitments] = useState([])
     const [loading, setLoading] = useState(false);
-    const [cateId, setCateId] = useState(null);
+    const [cateId, setCateId] = useState("");
     const [page, setPage] = useState(1);
+    const [q, setQ] = useState("");
+    const nav = useNavigation();
+
 
     const loadCates = async () => {
         let res = await APIs.get(endpoints['categories']);
-        console.info(res.date);
+        console.info(res.data);
         setCategories(res.data);
+
+
     }
 
     const loadRecruits = async () => {
-        setLoading(true);
+        if (page > 0) {
+            setLoading(true);
 
-        let url = `${endpoints['recruitments']}?page=${page}`;
+            let url = `${endpoints['recruitments']}?page=${page}`;
+            try {
+                if (cateId || q)
+                    url = `${url}&category_id=${cateId}&q=${q}`
+                console.info(url);
 
-        if (cateId)
-            url = `${url}&category_id=${cateId}`
+                let res = await APIs.get(url);
 
-        try {
-            let res = await APIs.get(url);
-            setRecruitments(res.data.results);
-        }
+                if (page > 1)
+                    setRecruitments([...recruitments, ...res.data.results]) // tai them du lieu neu page >1
+                else
+                    setRecruitments(res.data.results);
 
-        catch (ex) {
-            console.error(ex);
-        } finally {
-            setLoading(false);
+                if (res.data.next == null)
+                    setPage(0);
+            }
+
+            catch (ex) {
+                console.error(ex);
+            } finally {
+                setLoading(false);
+            }
         }
 
     }
@@ -45,25 +61,54 @@ const Home = () => {
     }, []);
 
     useEffect(() => {
+        let timer = setTimeout(() => loadRecruits(), 500);
 
-        loadRecruits();
-    }, [cateId,page]);
+        return () => clearTimeout(timer);
+
+    }, [cateId, page, q]);
+
+    const loadMore = () => {
+        if (page !== 0)
+            setPage(prev => prev + 1); //  Tăng trang
+    }
+
+
+    const search = (value, callback) => {
+        setPage(1);
+        callback(value);
+        setRecruitments([]); // Xóa kết quả cũ để tránh trộn lẫn
+
+    }
+
+    const refesh = () => {
+        setPage(1);
+        setRecruitments([]); // clear danh sách cũ để không trộn dữ liệu
+        loadCates();
+        loadRecruits();      // tải lại công việc
+
+    }
     return (
-        <View style={MyStyles.container}>
+        <View style={[MyStyles.container, MyStyles.margin]}>
             <Text style={MyStyles.subject}>DANH MỤC CÔNG VIỆC</Text>
             <View style={MyStyles.row}>
-                {categories.map(c => <TouchableOpacity onPress={() => setCateId(c.id)} key={c.id} ><Chip style={MyStyles.margin} icon="label" key={c.id}>{c.name}</Chip></TouchableOpacity>)}
+                <TouchableOpacity onPress={() => search("", setCateId)}  ><Chip style={MyStyles.margin} icon="label">All</Chip></TouchableOpacity>
+                {categories.map(c => <TouchableOpacity onPress={() => search(c.id, setCateId)} key={c.id} ><Chip style={MyStyles.margin} icon="label">{c.name}</Chip></TouchableOpacity>)}
             </View>
 
-            <ScrollView style={MyStyles.margin}>
-                {loading && <ActivityIndicator />}
-                {recruitments.map(c => <List.Item
-                    key={c.id}
-                    title={c.subject}
-                    description={c.created_date}
-                    left={props => <Image style={MyStyles.box} source={{ uri: c.image }} />}
-                />)}
-            </ScrollView>
+            {loading && <ActivityIndicator />}
+
+            <Searchbar
+                placeholder="Tìm kiếm công việc" value={q} onChangeText={t => search(t, setQ)} />
+            <FlatList refreshControl={<RefreshControl refreshing={loading} onRefresh={refesh} />}
+                onEndReached={loadMore} data={recruitments} renderItem={({ item }) => (<Items
+                    item={item}
+                    routeName="news"
+                    params={{ 'recruitmentId': item.id }}
+                />)
+                }></FlatList>
+
+
+
         </View>
     );
 }

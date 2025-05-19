@@ -126,7 +126,16 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         # chi cho xem nhung ho so chinh minh
-        return UserProfile.objects.filter(user=self.request.user, active = True)
+        # return UserProfile.objects.filter(user=self.request.user, active = True)
+
+        # them vao de xem truy van
+        if getattr(self, 'swagger_fake_view', False):
+            return UserProfile.objects.none()
+
+        if self.request.user.is_authenticated:
+            return UserProfile.objects.filter(user=self.request.user, active=True)
+
+        return UserProfile.objects.none()
 
     def perform_create(self, serializer):
         # Gan user cho ho so moi

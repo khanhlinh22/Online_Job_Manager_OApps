@@ -1,4 +1,4 @@
-from .models import Category, Recruitment, New, Tag, User,Comment
+from .models import Category, Recruitment, New, Tag, User,Comment, UserProfile
 from rest_framework import serializers
 
 
@@ -75,7 +75,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class UserProfileSerialize(serializers.ModelSerializer):
     class Meta:
-        model = New
+        model = UserProfile
         fields = ['id', 'first_name', 'last_name', 'phone', 'position', 'image']
         read_only_fields = ['user']
 
