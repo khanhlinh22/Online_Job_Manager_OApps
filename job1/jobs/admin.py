@@ -30,7 +30,7 @@ class NewForm(forms.ModelForm):
         fields = '__all__'
 
 class NewAdmin(admin.ModelAdmin):
-    list_display = ['id', 'subject', 'active', 'created_date']
+    list_display = ['id', 'subject', 'active', 'created_date', 'recruitment']
     search_fields = ['subject']
     list_filter = ['id', 'subject', 'created_date']
     readonly_fields = ['avatar']

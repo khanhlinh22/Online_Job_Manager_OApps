@@ -1,8 +1,8 @@
-import { ScrollView, Text } from "react-native"
+import { ScrollView, Text, View } from "react-native"
 import MyStyles from "../../styles/MyStyles"
 import { useEffect, useState } from "react";
 import APIs, { endpoints } from "../../configs/APIs";
-import { ActivityIndicator } from "react-native-paper";
+import { ActivityIndicator, List } from "react-native-paper";
 import Items from "./Items";
 
 const New = ({ route }) => {
@@ -31,11 +31,17 @@ const New = ({ route }) => {
                             key={ne.id}
                             item={ne}
                             routeName="newDetails"
-                            params={{ newId: ne.id }}
+                            params={{
+                                newId : ne.id,
+                                
+                            }}
                         />
                     ))}
                 </>
             )}
+
+
+
         </ScrollView>
     );
 }

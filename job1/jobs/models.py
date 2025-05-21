@@ -32,8 +32,6 @@ class Recruitment(BaseModel):
     subject = models.CharField(max_length=255)
     scription = models.TextField(null=True)
     # image =models.ImageField(upload_to='recruitment/%Y/%m/')
-    type = models.CharField(max_length=100)
-    salary = models.DecimalField(max_digits=12, decimal_places=2)
     image = CloudinaryField(null=True)
     category = models.ForeignKey(Category, on_delete=models.PROTECT)  # kieu khong cho xoa
 
@@ -51,6 +49,8 @@ class New(BaseModel):  # kieu bang tin dang tuyen dung
     subject = models.CharField(max_length=255)
     content = RichTextField()
     # image =models.ImageField(upload_to='new/%Y/%m/')
+    type = models.CharField(max_length=100)
+    salary = models.DecimalField(max_digits=12, decimal_places=2)
     image = CloudinaryField()
     recruitment = models.ForeignKey(Recruitment, on_delete=models.CASCADE)  # o tren xoa o duoi xoa theo
     tags = models.ManyToManyField('Tag')

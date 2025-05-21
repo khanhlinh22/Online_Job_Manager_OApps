@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="81050598-c80b-43ca-b8b1-44f68ed1d6a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/job1/jobs/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1/jobs/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1/jobs/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/job1/jobs/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/components/Home/Items.js" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/components/Home/Items.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/components/Home/New.js" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/components/Home/New.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/components/Home/NewDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/components/Home/NewDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/configs/APIs.js" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/configs/APIs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/job1mobileapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/job1mobileapp/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
