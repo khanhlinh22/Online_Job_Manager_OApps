@@ -20,7 +20,7 @@ class RecruitmentSerializer(BaseSerializer):
 
     class Meta:
         model = Recruitment
-        fields = ['id', 'subject', 'scription', 'salary','type','created_date', 'updated_date', 'active', 'category', 'image']
+        fields = ['id', 'subject', 'scription','created_date', 'updated_date', 'active', 'category', 'image']
 
 
 
@@ -28,7 +28,7 @@ class RecruitmentSerializer(BaseSerializer):
 class NewSerializer(BaseSerializer):
     class Meta:
         model = New
-        fields = ['id', 'subject', 'created_date', 'updated_date', 'active', 'recruitment', 'image']
+        fields = ['id', 'subject', 'created_date', 'updated_date', 'active', 'recruitment', 'image', 'salary','type']
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
