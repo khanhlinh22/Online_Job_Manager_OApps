@@ -47,13 +47,7 @@ const NewDetails = ({ route }) => {
 
                     <Card.Content>
                         <RenderHTML source={{ html: news.content }} />
-                        {/* Hiển thị lương và thể loại */}
-                        {news.recruitment && (
-                            <View style={{ marginTop: 10 }}>
-                                <Text><Text style={{ fontWeight: 'bold' }}>Lương: </Text>{news.recruitment.salary} VND</Text>
-                                <Text><Text style={{ fontWeight: 'bold' }}>Thể loại: </Text>{news.recruitment.type}</Text>
-                            </View>
-                        )}
+                        
                     </Card.Content>
                 </Card>
             </>}
