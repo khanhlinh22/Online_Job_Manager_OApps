@@ -7,8 +7,10 @@ export const endpoints = {
     'recruitments': '/recruitments/',
     'news': (recruitmentId) => `/recruitments/${recruitmentId}/news`,
     'new-details': (newId) => `/news/${newId}`,
-    'comments': (newId) => `/news/${newId}/comments`
-
+    'comments': (newId) => `/news/${newId}/comments`,
+    'login' : '/o/token',
+    'current-user': '/users/current-users/',
+    'register': '/users/'
 }
 
 export default axios.create({

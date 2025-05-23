@@ -89,7 +89,7 @@ const Home = () => {
     }
     return (
         <View style={[MyStyles.container, MyStyles.margin]}>
-            <Text style={MyStyles.subject}>DANH MỤC CÔNG VIỆC</Text>
+            <Text style={MyStyles.subject}>Common Job Categories</Text>
             <View style={MyStyles.row}>
                 <TouchableOpacity onPress={() => search("", setCateId)}  ><Chip style={MyStyles.margin} icon="label">All</Chip></TouchableOpacity>
                 {categories.map(c => <TouchableOpacity onPress={() => search(c.id, setCateId)} key={c.id} ><Chip style={MyStyles.margin} icon="label">{c.name}</Chip></TouchableOpacity>)}
@@ -98,7 +98,7 @@ const Home = () => {
             {loading && <ActivityIndicator />}
 
             <Searchbar
-                placeholder="Tìm kiếm công việc" value={q} onChangeText={t => search(t, setQ)} />
+                placeholder="Search Job" value={q} onChangeText={t => search(t, setQ)} />
             <FlatList refreshControl={<RefreshControl refreshing={loading} onRefresh={refesh} />}
                 onEndReached={loadMore} data={recruitments} renderItem={({ item }) => (<Items
                     item={item}

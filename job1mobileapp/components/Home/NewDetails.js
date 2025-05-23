@@ -1,56 +1,45 @@
 import { useEffect, useState } from "react";
-import { ActivityIndicator, ScrollView, Text, View } from "react-native"
+import { ActivityIndicator, ScrollView, View, Image, useWindowDimensions } from "react-native";
 import APIs, { endpoints } from "../../configs/APIs";
-import { Card } from "react-native-paper";
+import { Card, List } from "react-native-paper";
 import RenderHTML from "react-native-render-html";
 import moment from "moment";
 
-
 const NewDetails = ({ route }) => {
-
     const newId = route.params?.newId;
     const [news, setNews] = useState(null);
-    const [comments, setComments] = useState(null);
+    const [comments, setComments] = useState([]);
+    const { width } = useWindowDimensions();
 
     const loadNew = async () => {
         let res = await APIs.get(endpoints['new-details'](newId));
-        console.log(res.data);  // thêm dòng này
         setNews(res.data);
     }
 
-    const loadComment = async () => {
-        let res = await APIs.get(endpoints['comments'](newId));
+   const loadComment = async () => {
+    let res = await APIs.get(endpoints['comments'](newId));
+    console.info("COMMENTS RES:", res.data);
+    console.info("USER TEST:", res.data.results[0]?.user);
 
-        setComments(res.data);
-        console.info(res.data);
-    }
+    setComments(res.data.results);  // ✅ chỉ lấy mảng
+}
 
     useEffect(() => {
         loadNew();
-    }, [newId])
-
-    const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
-        return layoutMeasurement.height + contentOffset.y >= contentSize.height - 20;
-    }
-
-    const reachBottom = ({ nativeEvent }) => {
-        if (isCloseToBottom(nativeEvent) && comments === null)
-            loadComment
-    }
+        loadComment();
+    }, [newId]);
 
     return (
-        <ScrollView onScroll={reachBottom}>
-            {news === null ? <ActivityIndicator /> : <>
+        <ScrollView>
+            {news === null ? <ActivityIndicator /> : (
                 <Card>
                     <Card.Title title={news.subject} subtitle={moment(news.created_date).fromNow()} />
                     <Card.Cover source={{ uri: news.image }} />
-
                     <Card.Content>
-                        <RenderHTML source={{ html: news.content }} />
-                        
+                        <RenderHTML contentWidth={width} source={{ html: news.content }} />
                     </Card.Content>
                 </Card>
-            </>}
+            )}
 
             <View>
                 {comments === null ? (
@@ -63,8 +52,8 @@ const NewDetails = ({ route }) => {
                             description={moment(c.created_date).fromNow()}
                             left={() => (
                                 <Image
-                                    style={MyStyles.box}
                                     source={{ uri: c.user.avatar }}
+                                    style={{ width: 40, height: 40, borderRadius: 20, marginRight: 10 }}
                                 />
                             )}
                         />
@@ -73,7 +62,6 @@ const NewDetails = ({ route }) => {
             </View>
         </ScrollView>
     );
-
-}
+};
 
 export default NewDetails;

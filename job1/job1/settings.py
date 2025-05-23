@@ -150,12 +150,15 @@ cloudinary.config(
 )
 
 
-CLIENT_ID = 'R8oqau32w5HhFioPbkaNgwwNIjLmT1Rdn4cLcxis'
-CLIENT_SECRET = '71R9dYP7vpFClBSD7Ia12tPioBv75dbmpaORNRAiZtmcCwUWN1YSbvNMBT6Nc6NbZzPDHU3lZQHpMfSMhdvsxJNpPRTNe8EQZzdreS4Z2zBDUMrSvUtLq2uw16i0EwI8'
+CLIENT_ID = 'HYkRTzJuI1HIJ8KpaNugOrtXgNmNlHISrIqk3zGJ'
+CLIENT_SECRET = 'h2b0qR8DeQZuVifUM4KzwqWUoJ4DNaCTwsB2xnLmxp2NoCfthf1KgCazW4a7zMxrMu0OCbvf3G2TQFMDvPZZbCcVSm1azdE7YuageXQLRmg6VvKiL5rH8igJ4b7QuYmy'
 
 OAUTH2_PROVIDER = {
-    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore'
+    'OAUTH2_BACKEND_CLASS': 'oauth2_provider.oauth2_backends.JSONOAuthLibCore',
+    'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope'},
 }
+
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',

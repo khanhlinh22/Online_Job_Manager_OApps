@@ -9,7 +9,7 @@ const Items = ({item, routeName, params}) =>{
     return <List.Item
                        
                         title={item.subject}
-                        description={`Ngày đăng: ${moment(item.created_date).fromNow()} `}
+                        description={`Posting date: ${moment(item.created_date).fromNow()} `}
                         left={props => <TouchableOpacity onPress={()=> nav.navigate(routeName, params)}><Image style={MyStyles.box} source={{ uri: item.image }} /></TouchableOpacity>}
                     />
 }
