@@ -40,77 +40,52 @@ class RecruitmentViewSet(viewsets.ViewSet, generics.ListAPIView, generics.Destro
         return Response(serializers.NewSerializer(news, many=True).data)
 
 
-class NewViewSet(viewsets.ViewSet, generics.ListAPIView, generics.RetrieveAPIView, generics.DestroyAPIView):
-    queryset = New.objects.prefetch_related('tags').filter(active=True)
+class NewViewSet(viewsets.ViewSet, generics.RetrieveAPIView,generics.DestroyAPIView):
+    queryset = New.objects.prefetch_related('tags').filter(active = True)
     serializer_class = serializers.NewDetailSerializer
-    pagination_class = paginators.NewPagination  # Nếu bạn có pagination
-
-    def get_queryset(self):
-        query = self.queryset
-
-        # Lọc theo từ khóa subject
-        q = self.request.query_params.get('q')
-        if q:
-            query = query.filter(subject__icontains=q)
-
-        # Lọc theo salary: min_salary và max_salary
-        min_salary = self.request.query_params.get('min_salary')
-        max_salary = self.request.query_params.get('max_salary')
-
-        if min_salary:
-            try:
-                min_salary_value = float(min_salary)
-                query = query.filter(salary__gte=min_salary_value)
-            except ValueError:
-                pass
-
-        if max_salary:
-            try:
-                max_salary_value = float(max_salary)
-                query = query.filter(salary__lte=max_salary_value)
-            except ValueError:
-                pass
-
-        return query
 
     def get_permissions(self):
-        if self.action == 'get_comments':
-            if self.request.method == 'POST':
+        if self.action.__eq__('get_comments'):
+            if self.request.method in ['POST']:
                 return [permissions.IsAuthenticated()]
-        elif self.action == 'like':
-            return [permissions.IsAuthenticated()]
+        elif self.action.__eq__('like'):
+                return [permissions.IsAuthenticated()]
 
         return [permissions.AllowAny()]
 
-    @action(methods=['get', 'post'], url_path='comments', detail=True)
+    @action(methods=['get','post'], url_path='comments', detail = True)
     def get_comments(self, request, pk):
-        if request.method == 'POST':
-            serializer = serializers.CommentSerializer(data={
+        if request.method.__eq__('POST'):
+            t = serializers.CommentSerializer(data={
                 'content': request.data.get('content'),
                 'user': request.user.pk,
                 'new': pk
             })
-            serializer.is_valid(raise_exception=True)
-            comment = serializer.save()
-            return Response(serializers.CommentSerializer(comment).data, status=status.HTTP_201_CREATED)
-        else:
-            comments = self.get_object().comment_set.select_related('user').filter(active=True)
-            paginator = paginators.CommentPagination()
-            page = paginator.paginate_queryset(comments, request)
-            if page is not None:
-                serializer = serializers.CommentSerializer(page, many=True)
-                return paginator.get_paginated_response(serializer.data)
-            else:
-                serializer = serializers.CommentSerializer(comments, many=True)
-                return Response(serializer.data)
+            t.is_valid(raise_exception=True)
 
-    @action(methods=['post'], url_path='like', detail=True)
+            c = t.save()
+            return Response(serializers.CommentSerializer(c).data, status=status.HTTP_201_CREATED)
+        else:
+           comments = self.get_object().comment_set.select_related('user').filter(active = True)
+           p = paginators.CommentPagination()
+           page = p.paginate_queryset(comments, self.request)
+           if page is not None:
+                serializer =serializers.CommentSerializer(page, many=True)
+                return p.get_paginated_response(serializer.data)
+           else:
+               return Response(serializers.CommentSerializer(comments, many=True).data)
+
+    @action(methods=['post'], url_path='like', detail= True)
     def like(self, request, pk):
-        like_obj, created = Like.objects.get_or_create(user=request.user, new=self.get_object())
+        li, created = Like.objects.get_or_create(user=request.user, new=self.get_object())
+
         if not created:
-            like_obj.active = not like_obj.active
-        like_obj.save()
+            li.active = not li.active
+
+        li.save()
+
         return Response(serializers.NewDetailSerializer(self.get_object(), context={'request': request}).data)
+
 
 
 class CommentViewSet(viewsets.ViewSet, generics.DestroyAPIView, generics.UpdateAPIView):

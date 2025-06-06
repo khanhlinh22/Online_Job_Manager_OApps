@@ -1,0 +1,143 @@
+import { View, Text, ScrollView, TouchableOpacity, FlatList, RefreshControl, Button } from 'react-native';
+import MyStyles from "../../styles/MyStyles";
+import { useEffect, useState } from 'react';
+import APIs, { endpoints } from '../../configs/APIs';
+import { ActivityIndicator, Chip, List, Searchbar } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import Items from './Items';
+
+import { signOut } from 'firebase/auth';
+import { auth } from '../../FireBase/FirebaseConfig';
+
+const Home = ({ setIsLoggedIn }) => {
+  const [categories, setCategories] = useState([]);
+  const [recruitments, setRecruitments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [cateId, setCateId] = useState("");
+  const [page, setPage] = useState(1);
+  const [q, setQ] = useState("");
+  const nav = useNavigation();
+
+  const loadCates = async () => {
+    try {
+      let res = await APIs.get(endpoints['categories']);
+      setCategories(res.data);
+    } catch (ex) {
+      console.error(ex);
+    }
+  };
+
+  const loadRecruits = async () => {
+    if (page > 0) {
+      setLoading(true);
+      let url = `${endpoints['recruitments']}?page=${page}`;
+      if (cateId) url += `&category_id=${cateId}`;
+      if (q) url += `&q=${q}`;
+
+      try {
+        let res = await APIs.get(url);
+        if (page > 1)
+          setRecruitments(prev => [...prev, ...res.data.results]);
+        else
+          setRecruitments(res.data.results);
+
+        if (!res.data.next) setPage(0);
+      } catch (ex) {
+        console.error(ex);
+      } finally {
+        setLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    loadCates();
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      loadRecruits();
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [cateId, page, q]);
+
+  const loadMore = () => {
+    if (page !== 0) setPage(prev => prev + 1);
+  };
+
+  const search = (value, callback) => {
+    setPage(1);
+    callback(value);
+    setRecruitments([]);
+  };
+
+  const refresh = () => {
+    setPage(1);
+    setRecruitments([]);
+    loadCates();
+    loadRecruits();
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      setIsLoggedIn(false); // ✅ chuyển trạng thái
+      alert("Đã đăng xuất");
+    } catch (error) {
+      console.error("Lỗi đăng xuất:", error);
+      alert("Đăng xuất thất bại");
+    }
+  };
+
+  return (
+    <View style={[MyStyles.container, MyStyles.margin]}>
+      <Text style={MyStyles.subject}>Common Job Categories</Text>
+
+      {/* Đăng xuất */}
+      <View style={{ marginBottom: 10, alignItems: 'flex-end' }}>
+        <Button title="Đăng xuất" onPress={handleLogout} color="#E53935" />
+      </View>
+
+      {/* Categories */}
+      <View style={MyStyles.row}>
+        <TouchableOpacity onPress={() => search("", setCateId)}>
+          <Chip style={MyStyles.margin} icon="label">All</Chip>
+        </TouchableOpacity>
+        {categories.map(c => (
+          <TouchableOpacity key={c.id} onPress={() => search(c.id, setCateId)}>
+            <Chip style={MyStyles.margin} icon="label">{c.name}</Chip>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Loading */}
+      {loading && <ActivityIndicator />}
+
+      {/* Searchbar */}
+      <Searchbar
+        placeholder="Search Job"
+        value={q}
+        onChangeText={text => search(text, setQ)}
+      />
+
+      {/* Danh sách */}
+      <FlatList
+        data={recruitments}
+        keyExtractor={item => item.id.toString()}
+        renderItem={({ item }) => (
+          <Items
+            item={item}
+            routeName="news"
+            params={{ recruitmentId: item.id }}
+          />
+        )}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refresh} />
+        }
+        onEndReached={loadMore}
+      />
+    </View>
+  );
+};
+
+export default Home;

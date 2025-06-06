@@ -1,0 +1,8 @@
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    def get_permissions(self):
+        if self.action == 'create':  # cho phép bất kỳ ai đăng ký tài khoản
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated(), perms.OwnerPerms()]

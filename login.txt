@@ -2,8 +2,7 @@ import { Text, View } from "react-native"
 import MyStyles from "../../styles/MyStyles";
 import { Button, TextInput } from "react-native-paper";
 import { useState } from "react";
-import APIs, { authApis, endpoints } from "../../configs/APIs";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import APIs, { endpoints } from "../../configs/APIs";
 
 const Login = () => {
 
@@ -34,14 +33,10 @@ const Login = () => {
             let res = await APIs.post(endpoints['login'], {
                 ...user,
                 "grant_type": 'password',
-                "client_id": 'HYkRTzJuI1HIJ8KpaNugOrtXgNmNlHISrIqk3zGJ',
-                "client_secret": 'h2b0qR8DeQZuVifUM4KzwqWUoJ4DNaCTwsB2xnLmxp2NoCfthf1KgCazW4a7zMxrMu0OCbvf3G2TQFMDvPZZbCcVSm1azdE7YuageXQLRmg6VvKiL5rH8igJ4b7QuYmy',
+                "client_id": 'qC3M4OUiZXmZi7ks64cMzYpCJ6MJSJ6QRae80YrF',
+                "client_secret": 'l9NwgX3xzudQFl8Uk0AcVMmo7mVJH7We713lPnienE9ARB1VDiQdPiwWgfdHDbHLhsdHq16Q7DpaiAl8LmqrIy7ITr5U5hUbVb5FE4JbaKXlYRmPYRvOWK1NEHIyHNtF',
             });
-            // console.info(res.data);
-            // AsyncStorage.setItem('token', res.data.access_token);
-
-            // let user = await authApis(res.data.access_token).get(endpoints['current-user']);
-            // console.info(res.data);
+            console.info(res.data);
         } catch (ex) {
             if (ex.response) {
                 console.error("❌ Server error:", ex.response.data);
